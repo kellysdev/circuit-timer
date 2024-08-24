@@ -6,7 +6,6 @@ function App() {
   const [seconds, setSeconds] = useState(30);
   const [timerState, setTimerState] = useState("stopped");
 
-  //
   useEffect(() => {
     let interval;
 
@@ -19,7 +18,6 @@ function App() {
     return () => clearInterval(interval);
   }, [timerState, seconds]);
 
-  //
   const startOrStopTimer = () => {
     if (seconds === 0) {
       resetTimer();
