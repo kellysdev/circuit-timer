@@ -38,13 +38,11 @@ function App() {
   return (
     <>
       <header>Circuit Timer</header>
-      <main>
         <div className="individual-timer-component">
           <div>{seconds}</div>
           <button onClick={startOrStopTimer}>{timerState !== "running" ? "Start" : "Stop"}</button>
           <button onClick={resetTimer}>Reset</button>
         </div>
-      </main>
     </>
   )
 };
