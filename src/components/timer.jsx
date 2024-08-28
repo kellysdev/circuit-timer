@@ -2,7 +2,7 @@ const Timer = ({ roundPeriod, seconds, startOrStopTimer, timerState, resetTimer 
   return (
     <div className="timer">
       <div className={`seconds-container ${roundPeriod}`}>
-        {seconds != null ? (
+        {seconds !== null ? (
         <h2 className="seconds">{seconds}</h2>
         ) : null}
       </div>

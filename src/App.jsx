@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import Timer from "./components/timer";
 import './App.css'
 
 function App() {
@@ -111,7 +111,7 @@ function App() {
 
   return (
     <>
-      <header>Circuit Timer</header>
+      {/* <header>Circuit Timer</header> */}
         <div className="content">
           {editWorkout ? (
             <div className="edit-workout-container">
@@ -201,20 +201,13 @@ function App() {
                 <span>Rounds Completed: <strong>{roundsCompleted}</strong></span>
                 <span>Rounds to Go: <strong>{rounds - roundsCompleted}</strong></span>                
               </div>
-              <div className="timer">
-                {/* <div>{roundPeriod === "workout" ? (
-                  <h3 className="go">Go!</h3>
-                ) : (
-                  <h3 className="rest">Rest</h3>
-                )}</div> */}
-                <div className={`seconds-container ${roundPeriod}`}>
-                  {seconds != null ? (
-                  <h2 className="seconds">{seconds}</h2>
-                  ) : null}
-                </div>
-                <button onClick={startOrStopTimer}>{timerState !== "running" ? "Start" : "Stop"}</button>
-                <button onClick={resetTimer}>Reset</button>
-              </div>
+              <Timer 
+                roundPeriod={roundPeriod}
+                seconds={seconds}
+                startOrStopTimer={startOrStopTimer}
+                timerState={timerState}
+                resetTimer={resetTimer}
+              />
             </div>
           )}
         </div>
