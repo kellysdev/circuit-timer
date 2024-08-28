@@ -6,7 +6,9 @@ const Timer = ({ roundPeriod, seconds, startOrStopTimer, timerState, resetTimer 
         <h2 className="seconds">{seconds}</h2>
         ) : null}
       </div>
-      <button onClick={startOrStopTimer}>{timerState !== "running" ? "Start" : "Stop"}</button>
+      <button onClick={startOrStopTimer}>
+        {timerState !== "running" ? "Start" : "Stop"}
+      </button>
       <button onClick={resetTimer}>Reset</button>
   </div>
   )
