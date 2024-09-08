@@ -26,9 +26,29 @@ function App() {
 
   useEffect(() => {
     let interval;
-    if (timerState === "running" && seconds > 0) {
+    if (timerState === "running" && seconds >= 0) {
       interval = setInterval(() => {
-        setSeconds(prevSeconds => prevSeconds - 1);
+        setSeconds(prevSeconds =>  {
+          if (prevSeconds  > 0) {
+            return prevSeconds - 1;
+          } else {
+            // handle round switch after reaching 0
+            if (roundPeriod === "workout") {
+              if (roundsCompleted < rounds - 1) {
+                setRoundsCompleted(prevRounds => prevRounds + 1);
+                setRoundPeriod("rest");
+                return restSeconds;
+              } else {
+                setTimerState("stopped");
+                return 0;
+              }
+            } else if (roundPeriod === "rest") {
+              setRoundPeriod("workout");
+              return workoutSeconds;
+            }
+            return 0;
+          }
+        });
       }, 1000)
     } else if (timerState === "stopped") {
       return () => clearInterval(interval);
