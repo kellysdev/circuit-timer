@@ -111,7 +111,7 @@ function App() {
 
   return (
     <>
-      {/* <header>Circuit Timer</header> */}
+      <header>Circuit Timer</header>
         <div className="content">
           {editWorkout ? (
             <div className="edit-workout-container">
