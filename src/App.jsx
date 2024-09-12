@@ -24,12 +24,15 @@ function App() {
   const [editWorkout, setEditWorkout] = useState(true);
   const [timerState, setTimerState] = useState("stopped");
 
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
     let interval;
+
     if (timerState === "running" && seconds >= 0) {
       interval = setInterval(() => {
         setSeconds(prevSeconds =>  {
-          if (prevSeconds  > 0) {
+          if (prevSeconds > 0) {
             return prevSeconds - 1;
           } else {
             // handle round switch after reaching 0
@@ -50,6 +53,7 @@ function App() {
           }
         });
       }, 1000)
+
     } else if (timerState === "stopped") {
       return () => clearInterval(interval);
     } else if (seconds === 0) {
