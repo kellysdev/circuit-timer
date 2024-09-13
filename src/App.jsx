@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert"
 import Timer from "./components/timer";
 import './App.css'
 
@@ -25,6 +27,8 @@ function App() {
   const [timerState, setTimerState] = useState("stopped");
 
   const [open, setOpen] = useState(false);
+  const snackBarMessage = roundPeriod === "workout" ? "GO" : "REST";
+  const snackBarColor = roundPeriod === "workout" ? "success" : "error";
 
   useEffect(() => {
     let interval;
@@ -39,6 +43,7 @@ function App() {
             if (roundPeriod === "workout") {
               if (roundsCompleted < rounds - 1) {
                 setRoundsCompleted(prevRounds => prevRounds + 1);
+                setOpen(true);
                 setRoundPeriod("rest");
                 return restSeconds;
               } else {
@@ -46,6 +51,7 @@ function App() {
                 return 0;
               }
             } else if (roundPeriod === "rest") {
+              setOpen(true);
               setRoundPeriod("workout");
               return workoutSeconds;
             }
@@ -62,22 +68,33 @@ function App() {
           setRoundsCompleted(prevRounds => prevRounds + 1);
           setRoundPeriod("rest");
           setSeconds(restSeconds);
+          setOpen(true);
         } else {
           setTimerState("stopped");
         }
       } else if (roundPeriod === "rest") {
         setRoundPeriod("workout");
         setSeconds(workoutSeconds);
+        setOpen(true);
       };
     };
     return () => clearInterval(interval);
-  }, [timerState, seconds, roundsCompleted, rounds, roundPeriod, workoutSeconds, restSeconds]);
+  }, [timerState, seconds, roundsCompleted, rounds, roundPeriod, workoutSeconds, restSeconds, open, snackBarMessage]);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
 
   const startOrStopTimer = () => {
     if (seconds === 0) {
       resetTimer();
+      setOpen(true);
       return setTimerState("running");
     } else if (timerState === "stopped") {
+      setOpen(true);
       return setTimerState("running");
     } else {
       setTimerState("stopped");
@@ -136,6 +153,7 @@ function App() {
   return (
     <>
       <header>Circuit Timer</header>
+      {/* display edit screen or timer component */}
         <div className="content">
           {editWorkout ? (
             <div className="edit-workout-container">
@@ -220,6 +238,7 @@ function App() {
 
             </div>
           ) : (
+            // timer page
             <div className="timer-page-container">
               <div className="space-around-container workout-status">
                 <span>Rounds Completed: <strong>{roundsCompleted}</strong></span>
@@ -234,6 +253,7 @@ function App() {
               />
             </div>
           )}
+          {/* display workout details */}
         </div>
         {rounds > 0 && workoutSeconds > 0 && !editWorkout && (
           <div className="workout-stats-container">
@@ -249,6 +269,22 @@ function App() {
             >Edit Workout</button>
           </div>
         )}
+        <Snackbar 
+          open={open}
+          onClose={handleClose}
+          autoHideDuration={1000}
+          anchorOrigin={{vertical: "bottom", horizontal: "center"}}
+          severity={snackBarColor}
+        >
+          <Alert
+            icon={false}
+            variant="filled"
+            severity={snackBarColor}
+            sx={{ width: "100%" }}
+          >
+            {snackBarMessage}
+          </Alert>            
+        </Snackbar>
     </>
   )
 };
