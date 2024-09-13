@@ -27,11 +27,11 @@ header {
 }
 
 .workout {
-  border: 5px, solid, #fbc925;
+  border: 5px, solid, #388E3C;
 }
 
 .rest {
-  border: 5px, solid, #9e5cf9;
+  border: 5px, solid, #D32F2F;
 }
 
 button {
