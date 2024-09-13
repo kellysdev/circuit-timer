@@ -35,51 +35,41 @@ function App() {
 
     if (timerState === "running" && seconds >= 0) {
       interval = setInterval(() => {
-        setSeconds(prevSeconds =>  {
+        setSeconds(prevSeconds => {
           if (prevSeconds > 0) {
             return prevSeconds - 1;
           } else {
-            // handle round switch after reaching 0
+            // handle transitions when seconds reach 0
             if (roundPeriod === "workout") {
-              if (roundsCompleted < rounds - 1) {
-                setRoundsCompleted(prevRounds => prevRounds + 1);
-                setOpen(true);
+              // check if there are more rounds after workout ends
+              if (roundsCompleted < rounds -1) {
+                setRoundsCompleted((prevRounds) => prevRounds + 1);
                 setRoundPeriod("rest");
+                setOpen(true);
                 return restSeconds;
               } else {
+                // all rounds are completed
+                setRoundsCompleted(rounds);
                 setTimerState("stopped");
                 return 0;
               }
             } else if (roundPeriod === "rest") {
-              setOpen(true);
               setRoundPeriod("workout");
+              setOpen(true);
               return workoutSeconds;
             }
-            return 0;
+            return 0; // fallback
           }
         });
-      }, 1000)
+      }, 1000);
+    }
 
-    } else if (timerState === "stopped") {
-      return () => clearInterval(interval);
-    } else if (seconds === 0) {
-      if (roundPeriod === "workout") {
-        if (roundsCompleted < rounds - 1) {
-          setRoundsCompleted(prevRounds => prevRounds + 1);
-          setRoundPeriod("rest");
-          setSeconds(restSeconds);
-          setOpen(true);
-        } else {
-          setTimerState("stopped");
-        }
-      } else if (roundPeriod === "rest") {
-        setRoundPeriod("workout");
-        setSeconds(workoutSeconds);
-        setOpen(true);
-      };
-    };
+    if (timerState === "stopped") {
+      clearInterval(interval);
+    }
+
     return () => clearInterval(interval);
-  }, [timerState, seconds, roundsCompleted, rounds, roundPeriod, workoutSeconds, restSeconds, open, snackBarMessage]);
+  }, [timerState, seconds, roundsCompleted, rounds, roundPeriod, workoutSeconds, restSeconds]);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
