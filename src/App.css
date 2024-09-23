@@ -4,6 +4,33 @@
   text-align: center;
 }
 
+header {
+  font-size: xxx-large;
+  font-weight: bold;
+}
+
+.space-around-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+button {
+  margin: 0 10px;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+h3 {
+  margin: 1.5em auto 10px auto;
+}
+
+.stats {
+  margin-bottom: 10px;
+}
+
 /* Edit Workout */
 
 input {
