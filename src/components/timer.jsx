@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import './timer.css';
+
 const Timer = ({ roundPeriod, seconds, startOrStopTimer, timerState, resetTimer }) => {
   return (
     <div className="timer">
