@@ -71,8 +71,7 @@ function App() {
     }
   
     return () => clearInterval(interval);
-  }, [timerState, seconds, roundsCompleted, rounds, roundPeriod, workoutSeconds, restSeconds]);
-  
+  }, [timerState, seconds, rounds, roundPeriod, workoutSeconds, restSeconds]);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -239,6 +238,8 @@ function App() {
               </div>
               <Timer 
                 roundPeriod={roundPeriod}
+                workoutSeconds={workoutSeconds}
+                restSeconds={restSeconds}
                 seconds={seconds}
                 startOrStopTimer={startOrStopTimer}
                 timerState={timerState}

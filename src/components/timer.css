@@ -1,17 +1,18 @@
 .timer {
-  margin: 3em auto;
+  margin: 1em auto;
 }
 
 .seconds-container {
   padding: 1em;
-  margin: 2em 5em;
-  border-radius: 50%;
+  margin: 1em 5em;
+  display: grid;
+  & > * {
+    grid-column: 1;
+    grid-row: 1;
+  }
 }
 
-.workout {
-  border: 5px, solid, #388E3C;
-}
-
-.rest {
-  border: 5px, solid, #D32F2F;
+.seconds {
+  font-size: 2em;
+  margin: auto;
 }
