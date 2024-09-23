@@ -143,7 +143,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="app-container">
       <header>Circuit Timer</header>
       {/* display edit screen or timer component */}
         <div className="content">
@@ -234,7 +234,7 @@ function App() {
             <div className="timer-page-container">
               <div className="space-around-container workout-status">
                 <span>Rounds Completed: <strong>{roundsCompleted}</strong></span>
-                <span>Rounds to Go: <strong>{rounds - roundsCompleted}</strong></span>                
+                <span>Rounds to Go: <strong>{rounds - roundsCompleted}</strong></span>  
               </div>
               <Timer 
                 roundPeriod={roundPeriod}
@@ -279,7 +279,7 @@ function App() {
             {snackBarMessage}
           </Alert>            
         </Snackbar>
-    </>
+    </div>
   )
 };
 
