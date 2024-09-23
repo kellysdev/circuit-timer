@@ -32,44 +32,47 @@ function App() {
 
   useEffect(() => {
     let interval;
-
+  
     if (timerState === "running" && seconds >= 0) {
       interval = setInterval(() => {
-        setSeconds(prevSeconds => {
+        setSeconds((prevSeconds) => {
           if (prevSeconds > 0) {
             return prevSeconds - 1;
           } else {
-            // handle transitions when seconds reach 0
+            // Transition between workout and rest periods when seconds reach 0
             if (roundPeriod === "workout") {
-              // check if there are more rounds after workout ends
-              if (roundsCompleted < rounds -1) {
-                setRoundsCompleted((prevRounds) => prevRounds + 1);
-                setRoundPeriod("rest");
-                setOpen(true);
-                return restSeconds;
-              } else {
-                // all rounds are completed
-                setRoundsCompleted(rounds);
-                setTimerState("stopped");
-                return 0;
-              }
+              setRoundPeriod("rest");
+              setOpen(true);
+              // Increment rounds completed when workout ends
+              setRoundsCompleted((prevRounds) => {
+                const newRounds = prevRounds + 1;
+                // Check if all rounds are completed
+                if (newRounds >= rounds) {
+                  setTimerState("stopped");
+                  return rounds; // Ensure we don't exceed the total number of rounds
+                }
+                return newRounds;
+              });
+              return restSeconds; // Switch to rest
             } else if (roundPeriod === "rest") {
               setRoundPeriod("workout");
               setOpen(true);
-              return workoutSeconds;
+              return workoutSeconds; // Switch back to workout
             }
-            return 0; // fallback
+            return 0; // Safety fallback
           }
         });
       }, 1000);
     }
-
+  
+    // Clean up interval when the timer is stopped
     if (timerState === "stopped") {
       clearInterval(interval);
     }
-
+  
     return () => clearInterval(interval);
   }, [timerState, seconds, roundsCompleted, rounds, roundPeriod, workoutSeconds, restSeconds]);
+  
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
