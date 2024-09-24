@@ -5,6 +5,7 @@ import './timer.css';
 const Timer = ({ roundPeriod, workoutSeconds, restSeconds, seconds, startOrStopTimer, timerState, resetTimer }) => {
   const MAX = (roundPeriod === "workout" ? workoutSeconds : restSeconds);
   const normalise = (value) => (value * 100) / (MAX);
+  const progressColor = (roundPeriod === "workout" ? "success" : "error");
   
   return (
     <div className="timer">
@@ -13,6 +14,7 @@ const Timer = ({ roundPeriod, workoutSeconds, restSeconds, seconds, startOrStopT
         <CircularProgress 
           variant="determinate" value={normalise(seconds)} 
           className="circular-progress"
+          color={progressColor}
           size="8em"
         />
         {seconds !== null ? (
