@@ -6,22 +6,22 @@ import './App.css'
 
 function App() {
   const [seconds, setSeconds] = useState(null);
-  const [workoutSeconds, setWorkoutSeconds] = useState(0);
-  const [restSeconds, setRestSeconds] = useState(0);
+  const [workoutSeconds, setWorkoutSeconds] = useState(45);
+  const [restSeconds, setRestSeconds] = useState(15);
   const [roundPeriod, setRoundPeriod] = useState("workout");
 
   const [workoutPeriod, setWorkoutPeriod] = useState({
     hours: 0,
     minutes: 0,
-    seconds: 0
+    seconds: 45
   });
   const [restPeriod, setRestPeriod] = useState({
     hours: 0,
     minutes: 0,
-    seconds: 0
+    seconds: 15
   });
 
-  const [rounds, setRounds] = useState(1);
+  const [rounds, setRounds] = useState(7);
   const [roundsCompleted, setRoundsCompleted] = useState(0);
   const [editWorkout, setEditWorkout] = useState(true);
   const [timerState, setTimerState] = useState("stopped");
@@ -149,7 +149,7 @@ function App() {
         <div className="content">
           {editWorkout ? (
             <div className="edit-workout-container">
-
+              <p>Set the time for each round of your workout.</p>
               <h3>Workout Time</h3>
               <div className="space-around-container">
                 <span>hours</span>
