@@ -21,6 +21,10 @@ body {
   min-height: 80vh;
 }
 
+.glow {
+  filter: drop-shadow(0 0 4px #a7a8a8);
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -32,6 +36,7 @@ button {
   background-color: #303030;
   cursor: pointer;
   transition: border-color 0.25s;
+  filter: drop-shadow(0 0 3px #585858);
 }
 button:hover {
   border-color: #ffffffb7;

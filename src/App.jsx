@@ -144,13 +144,14 @@ function App() {
 
   return (
     <div className="app-container">
-      <header>Circuit Timer</header>
       {/* display edit screen or timer component */}
         <div className="content">
           {editWorkout ? (
             <div className="edit-workout-container">
-              <p>Set the time for each round of your workout.</p>
-              <h3>Workout Time</h3>
+              <header className="glow">Circuit Timer</header>
+              <p>Set the time for each round of your workout,<br/>
+              then click &quot;Get Started&quot; to begin!</p>
+              <h3 className="glow">Workout Time</h3>
               <div className="space-around-container">
                 <span>hours</span>
                 <span>minutes</span>
@@ -181,7 +182,7 @@ function App() {
                 value={workoutPeriod.seconds}
               />
 
-              <h3>Rest Time</h3>
+              <h3 className="glow">Rest Time</h3>
               <div className="space-around-container">
                 <span>hours</span>
                 <span>minutes</span>
@@ -212,7 +213,7 @@ function App() {
                 value={restPeriod.seconds}
               />
 
-              <h3>Rounds</h3>
+              <h3 className="glow">Rounds</h3>
               <input 
                 type="number"
                 label="Rounds"
@@ -232,6 +233,7 @@ function App() {
           ) : (
             // timer page
             <div className="timer-page-container">
+              <header className="glow">{roundPeriod === "workout" ? "Work" : "Rest"}</header>
               <div className="space-around-container workout-status">
                 <span>Rounds Completed: <strong>{roundsCompleted}</strong></span>
                 <span>Rounds to Go: <strong>{rounds - roundsCompleted}</strong></span>  
@@ -251,7 +253,7 @@ function App() {
         </div>
         {rounds > 0 && workoutSeconds > 0 && !editWorkout && (
           <div className="workout-stats-container">
-            <h3 className="stats-title">Workout</h3>
+            <h3 className="stats-title glow">Workout</h3>
             <div className="stats-container">
               <div className="stats">Rounds: {rounds}</div>
               <div className="stats">Active: {workoutSeconds} s</div>

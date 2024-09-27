@@ -13,13 +13,13 @@ const Timer = ({ roundPeriod, workoutSeconds, restSeconds, seconds, startOrStopT
       <div className="seconds-container">
         <CircularProgress 
           variant="determinate" value={normalise(seconds)} 
-          className="circular-progress"
+          className="circular-progress glow"
           color={progressColor}
           size="8em"
         />
         {seconds !== null ? (
         <p className="seconds">{seconds}</p>
-        ) : <h2 className="seconds">00</h2>}
+        ) : <h2 className="seconds glow">00</h2>}
       </div>
 
       <button onClick={startOrStopTimer}>
