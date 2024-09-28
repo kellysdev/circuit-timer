@@ -233,11 +233,10 @@ function App() {
           ) : (
             // timer page
             <div className="timer-page-container">
-              <header className="glow">{timerState === "stopped" ? "Press Start" : roundPeriod === "workout" ? "Work" : "Rest"}</header>
-              <div className="space-around-container workout-status">
-                <span>Rounds Completed: <strong>{roundsCompleted}</strong></span>
-                <span>Rounds to Go: <strong>{rounds - roundsCompleted}</strong></span>  
-              </div>
+              <header className="glow">
+                {timerState === "stopped" ? "Press Start" : roundPeriod === "workout" ? "Work" : "Rest"}
+              </header>
+              <p>Round {roundsCompleted !== rounds ? roundsCompleted + 1 : rounds} of {rounds}</p>
               <Timer 
                 roundPeriod={roundPeriod}
                 workoutSeconds={workoutSeconds}
