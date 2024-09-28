@@ -42,6 +42,7 @@ header {
 .stats-container {
   display: flex;
   justify-content: space-around;
+  margin: 0 0 1em 0;
 }
 
 h3 {
