@@ -149,7 +149,7 @@ function App() {
           {editWorkout ? (
             <div className="edit-workout-container">
               <header className="glow">Circuit Timer</header>
-              <p>Set the time for each round of your workout,<br/>
+              <p className="instructions">Set the time for each round of your workout,<br/>
               then click &quot;Get Started&quot; to begin!</p>
               <h3 className="glow">Workout Time</h3>
               <div className="space-around-container">

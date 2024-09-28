@@ -27,6 +27,13 @@ header {
   font-weight: bold;
 }
 
+.instructions {
+  background-color: #353535;
+  padding: 1em;
+  border-radius: 1em;
+  margin-top: 0.1em;
+}
+
 .space-around-container {
   display: flex;
   justify-content: space-around;
