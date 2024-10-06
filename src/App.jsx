@@ -5,10 +5,20 @@ import Timer from "./components/timer";
 import './App.css'
 
 function App() {
+  // seconds left in current round
   const [seconds, setSeconds] = useState(null);
+  // number of active seconds in current round
   const [workoutSeconds, setWorkoutSeconds] = useState(45);
+  // number of rest seconds in current round
   const [restSeconds, setRestSeconds] = useState(15);
+  // roundPeriod = workout or rest
   const [roundPeriod, setRoundPeriod] = useState("workout");
+  // a circuit is a number of rounds
+  const [circuit, setCircuit] = useState(1);
+  const [currentCircuit, setCurrentCircuit] = useState(1);
+  // rest between circuits
+  const [circuitRestSeconds, setCircuitRestSeconds] = useState(60);
+  const [isCircuitRest, setIsCircuitRest] = useState(false);
 
   const [workoutPeriod, setWorkoutPeriod] = useState({
     hours: 0,
@@ -21,11 +31,14 @@ function App() {
     seconds: 15
   });
 
+  // number of rounds in circuit
   const [rounds, setRounds] = useState(7);
+  // number of rounds completed in current circuit
   const [roundsCompleted, setRoundsCompleted] = useState(0);
+
   const [editWorkout, setEditWorkout] = useState(true);
   const [timerState, setTimerState] = useState("stopped");
-
+  // snackbar handling
   const [open, setOpen] = useState(false);
   const snackBarMessage = roundPeriod === "workout" ? "GO" : "REST";
   const snackBarColor = roundPeriod === "workout" ? "success" : "error";
