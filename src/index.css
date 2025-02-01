@@ -9,54 +9,65 @@
 }
 
 *{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+  margin: auto;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 body {
-font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-background-color: var(--background-color);
-color: var(--text-color);
-line-height: 1.6;
-padding: var(--spacing-unit);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: var(--spacing-unit);
+}
+
+header {
+  font-size: xx-large;
+  font-weight: bolder;
 }
 
 .btn {
-padding: 0.75rem 1.5rem;
-border-radius: var(--border-radius);
-border: none;
-font-weight: 600;
-cursor: pointer;
-transition: transform 0.2s, background-color 0.2s;
-min-width: 100px;
+  margin: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  min-width: 100px;
 }
 
 .btn:hover {
-transform: translateY(-2px);
+  transform: translateY(-2px);
 }
 
 .btn-start {
-background-color: var(--primary-color);
-color: white;
+  background-color: var(--primary-color);
+  color: white;
 }
 
 .btn-pause {
-background-color: var(--accent-color);
-color: white;
+  background-color: var(--accent-color);
+  color: white;
 }
 
 .btn-reset {
-background-color: #dc3545;
-color: white;
+  background-color: #dc3545;
+  color: white;
 }
 
 .btn-edit {
-background-color: var(--secondary-color);
-color: white;
+  background-color: var(--secondary-color);
+  color: white;
 }
 
 /* Edit Workout */
+
+.instructions {
+  padding: 1em;
+}
 
 input {
   margin: 0 15px 18px 0;
