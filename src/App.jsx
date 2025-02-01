@@ -155,12 +155,12 @@ function App() {
   };
 
   return (
-    <div className="app-container">
-      {/* display edit screen or timer component */}
+    <body>
         <div className="content">
+        <header>Circuit Timer</header>
+        {/* display the edit or timer page */}
           {editWorkout ? (
             <div className="edit-workout-container">
-              <header>Circuit Timer</header>
               <p className="instructions">Set the time for each round of your workout,<br/>
               then click &quot;Get Started&quot; to begin!</p>
               <h3>Workout Time</h3>
@@ -236,18 +236,20 @@ function App() {
                 className="rounds-input"
               />
 
-              <button 
-                onClick={handleGetStarted}
-                className="btn btn-edit"
-              >Get Started</button>
+              <div>
+                <button 
+                  onClick={handleGetStarted}
+                  className="btn btn-edit"
+                >Get Started</button>
+              </div>
 
             </div>
           ) : (
             // timer page
             <div className="timer-page-container">
-              <header>
+              {/* <header>
                 {timerState === "stopped" ? "Press Start" : roundPeriod === "workout" ? "Work" : "Rest"}
-              </header>
+              </header> */}
               <p>Round {roundsCompleted !== rounds ? roundsCompleted + 1 : rounds} of {rounds}</p>
               <Timer 
                 roundPeriod={roundPeriod}
@@ -292,7 +294,7 @@ function App() {
             {snackBarMessage}
           </Alert>            
         </Snackbar>
-    </div>
+    </body>
   )
 };
 
