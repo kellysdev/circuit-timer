@@ -238,7 +238,7 @@ function App() {
 
               <button 
                 onClick={handleGetStarted}
-                className="get-started-button"
+                className="btn btn-edit"
               >Get Started</button>
 
             </div>
@@ -272,7 +272,7 @@ function App() {
             </div>
             <button 
               onClick={() => setEditWorkout(true)}
-              className="edit-button"
+              className="btn btn-edit"
             >Edit Workout</button>
           </div>
         )}
