@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import CircularProgress from "@mui/material/CircularProgress";
-import './timer.css';
 
 const Timer = ({ roundPeriod, workoutSeconds, restSeconds, seconds, startOrStopTimer, timerState, resetTimer }) => {
   const MAX = (roundPeriod === "workout" ? workoutSeconds : restSeconds);
@@ -13,19 +12,19 @@ const Timer = ({ roundPeriod, workoutSeconds, restSeconds, seconds, startOrStopT
       <div className="seconds-container">
         <CircularProgress 
           variant="determinate" value={normalise(seconds)} 
-          className="circular-progress glow"
+          className="circular-progress"
           color={progressColor}
           size="8em"
         />
         {seconds !== null ? (
         <p className="seconds">{seconds}</p>
-        ) : <h2 className="seconds glow">00</h2>}
+        ) : <h2 className="seconds">00</h2>}
       </div>
 
-      <button onClick={startOrStopTimer}>
-        {timerState !== "running" ? "Start" : "Stop"}
+      <button className={`${timerState === 'stopped' ? 'btn btn-start' : 'btn btn-pause'}`} onClick={startOrStopTimer}>
+        {timerState !== "running" ? "Start" : "Pause"}
       </button>
-      <button onClick={resetTimer}>Reset</button>
+      <button className="btn btn-reset" onClick={resetTimer}>Reset</button>
 
   </div>
   )
