@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert"
 import Timer from "./components/timer";
-import './App.css'
 
 function App() {
   // seconds left in current round
@@ -161,11 +160,11 @@ function App() {
         <div className="content">
           {editWorkout ? (
             <div className="edit-workout-container">
-              <header className="glow">Circuit Timer</header>
+              <header>Circuit Timer</header>
               <p className="instructions">Set the time for each round of your workout,<br/>
               then click &quot;Get Started&quot; to begin!</p>
-              <h3 className="glow">Workout Time</h3>
-              <div className="space-around-container">
+              <h3>Workout Time</h3>
+              <div>
                 <span>hours</span>
                 <span>minutes</span>
                 <span>seconds</span>
@@ -195,8 +194,8 @@ function App() {
                 value={workoutPeriod.seconds}
               />
 
-              <h3 className="glow">Rest Time</h3>
-              <div className="space-around-container">
+              <h3>Rest Time</h3>
+              <div>
                 <span>hours</span>
                 <span>minutes</span>
                 <span>seconds</span>
@@ -226,7 +225,7 @@ function App() {
                 value={restPeriod.seconds}
               />
 
-              <h3 className="glow">Rounds</h3>
+              <h3>Rounds</h3>
               <input 
                 type="number"
                 label="Rounds"
@@ -239,14 +238,14 @@ function App() {
 
               <button 
                 onClick={handleGetStarted}
-                className="start-button"
+                className="get-started-button"
               >Get Started</button>
 
             </div>
           ) : (
             // timer page
             <div className="timer-page-container">
-              <header className="glow">
+              <header>
                 {timerState === "stopped" ? "Press Start" : roundPeriod === "workout" ? "Work" : "Rest"}
               </header>
               <p>Round {roundsCompleted !== rounds ? roundsCompleted + 1 : rounds} of {rounds}</p>
@@ -265,11 +264,11 @@ function App() {
         </div>
         {rounds > 0 && workoutSeconds > 0 && !editWorkout && (
           <div className="workout-stats-container">
-            <h3 className="stats-title glow">Workout</h3>
-            <div className="stats-container">
-              <div className="stats">Rounds: {rounds}</div>
-              <div className="stats">Active: {workoutSeconds} s</div>
-              <div className="stats">Rest: {restSeconds} s</div>
+            <h3 className="stats-title">Workout</h3>
+            <div>
+              <div>Rounds: {rounds}</div>
+              <div>Active: {workoutSeconds} s</div>
+              <div>Rest: {restSeconds} s</div>
             </div>
             <button 
               onClick={() => setEditWorkout(true)}
